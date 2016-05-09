@@ -25,6 +25,13 @@ router.post('/:user/addlike/:post', (req,res) => {
     })
 })
 
+router.post('/:user/unlike/:post', (req,res) => {
+    User.unlike(req.params.user,req.params.post, err=> {
+        // res.cookie('testcookie', 'ok.cookie');
+        res.status(err ? 400 : 200).send(err);
+    })
+})
+
 
 router.post('/register', (req,res) => {
     User.register(req.body, err=> {

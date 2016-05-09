@@ -32,22 +32,29 @@ userSchema.statics.like = function(user1Id, postId, cb) {
         //    console.log('postId:', thispost)
             if(err1 || err2) return cb(err1 || err2);
 
-         //   var user1HasFriend = user1.friends.indexOf(user2._id) !== -1;
-          //  var user2HasFriend = user2.friends.indexOf(user1._id) !== -1;
-
-        //    if(user1HasFriend || user2HasFriend) {
-         //       return cb({error: "They're already friends!"});
-         //   }
-
             user1.liked.push(thispost._id);
             user1.save((cb));
             thispost.like();
 
-           /// user1.save((err1) => {
-            //    user2.save((err2) => {
-             //       cb(err1 || err2);
-            //    });
-           // });
+        });
+    });
+};
+userSchema.statics.unlike = function(user1Id, postId, cb) {
+    // if(user1Id === user2Id) {
+    //     return cb({error: "You can't be your own friend!"})
+    //  }
+    console.log(postId)
+    User.findById(user1Id, (err1, user1) => {
+        // console.log('user1:', user1)
+        Post.findById(postId, (err2, thispost) => {
+            //    console.log('postId:', thispost)
+            if(err1 || err2) return cb(err1 || err2);
+
+             user1.liked.splice(user1.liked.indexOf(thispost._id),1);
+   //         user1.liked.push(thispost._id);
+              user1.save((cb));
+              thispost.unlike();
+
         });
     });
 };

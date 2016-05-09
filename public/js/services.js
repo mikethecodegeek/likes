@@ -20,6 +20,11 @@ app.service('userService',function($http) {
         //console.log('user:',user)
        // console.log('post:', post)
         return $http.post(`./api/users/${user}/addlike/${post}`)
+    };
+    this.unlikePost = (user,post) => {
+        //console.log('user:',user)
+        // console.log('post:', post)
+        return $http.post(`./api/users/${user}/unlike/${post}`)
     }
     this.register = newPost => {
        // console.log(newPost)

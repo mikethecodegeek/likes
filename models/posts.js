@@ -16,6 +16,11 @@ postSchema.methods.like = function(cb) {
     this.save(cb);
 };
 
+postSchema.methods.unlike = function(cb) {
+    this.likes--;
+    this.save(cb);
+};
+
 var Post = mongoose.model('Post', postSchema);
 
 module.exports = Post;

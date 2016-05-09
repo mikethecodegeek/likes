@@ -38,6 +38,16 @@ app.controller('homeCtrl', function(userService, $scope, $state) {
             });
     }
 
+    $scope.unlikethis = function(postId) {
+        console.log('postId:', postId);
+        console.log('userId:', $scope.apiData.data._id)
+        userService.unlikePost($scope.apiData.data._id, postId)
+            .then(stuff => {
+                //$scope.loggedin = false;
+                //$state.go('home');
+                console.log(stuff)
+            });
+    }
 });
 
 
