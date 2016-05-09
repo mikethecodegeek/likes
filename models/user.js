@@ -34,6 +34,7 @@ userSchema.statics.like = function(user1Id, postId, cb) {
 
             user1.liked.push(thispost._id);
             user1.save((cb));
+            thispost.userlikes.push(user1);
             thispost.like();
 
         });
@@ -43,7 +44,7 @@ userSchema.statics.unlike = function(user1Id, postId, cb) {
     // if(user1Id === user2Id) {
     //     return cb({error: "You can't be your own friend!"})
     //  }
-    console.log(postId)
+    console.log(postId);
     User.findById(user1Id, (err1, user1) => {
         // console.log('user1:', user1)
         Post.findById(postId, (err2, thispost) => {
@@ -53,6 +54,7 @@ userSchema.statics.unlike = function(user1Id, postId, cb) {
              user1.liked.splice(user1.liked.indexOf(thispost._id),1);
    //         user1.liked.push(thispost._id);
               user1.save((cb));
+              thispost.userlikes.splice(thispost.userlikes.indexOf(user1));
               thispost.unlike();
 
         });

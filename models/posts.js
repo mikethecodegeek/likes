@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 var postSchema = new mongoose.Schema({
     username: {type: String, required: true, unique: true},
     post: {type: String},
-    likes: {type: Number, default: 0}
+    likes: {type: Number, default: 0},
+    userlikes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 });
 
 

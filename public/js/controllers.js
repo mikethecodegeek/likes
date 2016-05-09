@@ -8,7 +8,7 @@ app.controller('homeCtrl', function(userService, $scope, $state) {
     userService.getPosts()
         .then(stuff => {
             $scope.posts = stuff.data;
-            console.log($scope.apiData);
+            console.log($scope.posts);
             // $scope.loggedin = true;
             //  console.log($scope.loggedin)
         });
