@@ -12,7 +12,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 //var MONGODB_URI = 'mongodb://<example>:<example>@ds013222.mlab.com:13222/properties'
-const MONGOURL = process.env.MONGOLAB_MAUVE_URI || 'mongodb://localhost/mongo-express';
+const MONGOURL = process.env.MONGODB_URI || 'mongodb://localhost/mongo-express';
 mongoose.connect(MONGOURL, err => {
     console.log(err || 'Connected to MongoDB')
 });
