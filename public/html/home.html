@@ -1,0 +1,22 @@
+<div>
+    <a class="btn right" ng-show="!loggedin" ui-sref='login'>Login</a>
+    <a class='btn right' ng-show="loggedin" ng-click="logout()">Logout</a>
+    <a class='btn right' ng-show="loggedin" ui-sref="newpost">Create Post</a>
+</div>
+<h1 class="center">Simple Message-Board</h1>
+
+<div class="center">
+<table>
+    <tr>
+        <th>User</th>
+        <th>Message</th>
+        <th>Likes</th>
+    </tr>
+    <tr ng-repeat="post in posts">
+        <td>{{post.username}}</td>
+        <td>{{post.post}}</td>
+        <td>{{post.likes}}</td>
+        <td><a class="btn" ng-show="loggedin" ng-click="likethis(post._id)">Like This</a></td>
+    </tr>
+</table>
+</div>
